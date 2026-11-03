@@ -36,4 +36,4 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
       - name: Deploy
-        run: echo "заметка из ветки"
+        run: echo "заметка из ветки trial"
