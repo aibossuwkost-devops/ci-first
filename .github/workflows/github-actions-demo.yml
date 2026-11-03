@@ -9,9 +9,21 @@ jobs:
       - name: Create note
         run: echo "заметка" > note.txt
 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: note-file
+          path: note.txt
+
   check:
     needs: prepare
     runs-on: ubuntu-latest
     steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: note-file
+          path: .
+
       - name: Read note
         run: cat note.txt
