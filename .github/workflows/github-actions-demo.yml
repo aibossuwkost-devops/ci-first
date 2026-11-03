@@ -39,3 +39,6 @@ jobs:
     steps:
       - name: Publish script
         run: echo "Выкладка запущена человеком"
+
+      - name: Show application name
+        run: echo "Имя: ${{ vars.APP_NAME }}"
