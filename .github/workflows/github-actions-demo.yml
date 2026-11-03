@@ -1,17 +1,24 @@
-
 name: CI First
 
 on: [push]
 
 jobs:
-  readme:
+  prepare:
     runs-on: ubuntu-latest
     steps:
-      - name: Get repository
-        uses: actions/checkout@v6
+      - name: Prepare
+        run: echo "Подготовка завершена"
 
-      - name: Check README
-        run: |
-          echo "Проверка с компьютера!"
-          test -f README.md
-          echo "README.md на месте"
+  check:
+    needs: prepare
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check
+        run: echo "Проверка завершена"
+
+  publish:
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish
+        run: echo "Выкладка завершена"
