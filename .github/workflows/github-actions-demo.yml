@@ -6,19 +6,12 @@ jobs:
   prepare:
     runs-on: ubuntu-latest
     steps:
-      - name: Prepare
-        run: echo "Подготовка завершена"
+      - name: Create note
+        run: echo "заметка" > note.txt
 
   check:
     needs: prepare
     runs-on: ubuntu-latest
     steps:
-      - name: Check
-        run: echo "Проверка завершена"
-
-  publish:
-    needs: check
-    runs-on: ubuntu-latest
-    steps:
-      - name: Publish
-        run: echo "Выкладка завершена"
+      - name: Read note
+        run: cat note.txt
