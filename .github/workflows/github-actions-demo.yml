@@ -12,6 +12,6 @@ jobs:
 
       - name: Check README
         run: |
-          echo "Проверка с компьютера"
+          echo "Проверка с компьютера!"
           test -f README.md
           echo "README.md на месте"
