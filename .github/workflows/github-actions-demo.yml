@@ -34,4 +34,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Publish
-        run: echo "Выкладка с основной ветки"
+        run: echo "заметка из ветки" > note.txt
