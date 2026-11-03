@@ -27,3 +27,11 @@ jobs:
 
       - name: Read note
         run: cat note.txt
+
+  publish:
+    needs: check
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish
+        run: echo "Выкладка с основной ветки"
