@@ -22,15 +22,15 @@ jobs:
           echo "Секрет на месте"
 
 publish:
-  needs: check
-  runs-on: ubuntu-latest
-  steps:
-    - name: key
-      env:
-        DEPLOY_KEY: ${{secrets.DEPLOY_KEY}}
-      run: |
-        mkdir -p "$HOME/.ssh"
-        chmod 700 "$HOME/.ssh"
-        printf '%s\n' "$DEPLOY_KEY" > "$HOME/.ssh/id_ed25519"
-        chmod 600 "$HOME/.ssh/id_ed25519"
-        ssh-keygen -lf "$HOME/.ssh/id_ed25519"
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
+      - name: key
+        env:
+          DEPLOY_KEY: ${{secrets.DEPLOY_KEY}}
+        run: |
+          mkdir -p "$HOME/.ssh"
+          chmod 700 "$HOME/.ssh"
+          printf '%s\n' "$DEPLOY_KEY" > "$HOME/.ssh/id_ed25519"
+          chmod 600 "$HOME/.ssh/id_ed25519"
+          ssh-keygen -lf "$HOME/.ssh/id_ed25519"
