@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main]
+  
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -14,4 +14,9 @@ jobs:
           APP_NAME: ${{vars.APP_NAME}}
         run: |
           echo "Имя: $APP_NAME"
-          
+      - name: secret
+        env:
+          NOTE_TOKEN: ${{secrets.NOTE_TOKEN}}
+        run: |
+          test -n "$NOTE_TOKEN}}
+          echo "Секрет на месте"
