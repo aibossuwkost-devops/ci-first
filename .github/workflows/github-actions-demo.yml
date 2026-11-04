@@ -2,38 +2,15 @@ name: CI
 
 on:
   push:
-    branches: [main]
 
 jobs:
-  note:
+  check:
     runs-on: ubuntu-latest
     steps:
-      - name: Создать заметку
-        run: echo 'заметка' > note.txt
-      - name: Сохранить артефакт
-        uses: actions/upload-artifact@v4
-        with:
-          name: note
-          path: note.txt
-
-  read:
-    needs: note
-    runs-on: ubuntu-latest
-    steps:
-      - name: Забрать артефакт
-        uses: actions/download-artifact@v4
-        with:
-          name: note
-      - name: Прочитать заметку
-        run: cat note.txt
-
-  publish:
-    needs: read
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    environment: production
-    steps:
-      - name: Выкладка
-        run: |
-          echo "Выкладка запущена человеком"
-          echo "Имя: ${{ vars.APP_NAME }}"
+      - uses: actions/checkout@v7
+      - run: test -f README.md
+      - name: show
+        env:
+          APP_NAME: ${{vars.APP_NAME}}
+        run: echo "Имя: $APP_NAME"
+          
