@@ -7,7 +7,7 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - run: test -f README.md
       - name: show
         env:
@@ -20,3 +20,12 @@ jobs:
         run: |
           test -n "$NOTE_TOKEN"
           echo "Секрет на месте"
+      - name: key
+        env:
+          DEPLOY_KEY: ${{secrets.DEPLOY_KEY}}
+        run: |
+          mkdir -p "$HOME/.ssh"
+          chmod 700 "$HOME/.ssh"
+          printf '%s\n' "$DEPLOY_KEY" > "$HOME/.ssh/id_ed25519"
+          chmod 600 "$HOME/.ssh/id_ed25519"
+          ssh-keygen -lf "$HOME/.ssh/id_ed25519"
