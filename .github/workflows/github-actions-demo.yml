@@ -18,5 +18,5 @@ jobs:
         env:
           NOTE_TOKEN: ${{secrets.NOTE_TOKEN}}
         run: |
-          test -n "$NOTE_TOKEN}}
+          test -n "$NOTE_TOKEN"
           echo "Секрет на месте"
