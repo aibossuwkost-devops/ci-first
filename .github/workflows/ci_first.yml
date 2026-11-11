@@ -17,7 +17,7 @@ jobs:
       - name: show
         env:
           APP_NAME: ${{ vars.APP_NAME }}
-        run: echo "Имя: $APP_NAME"
+        run: 'echo "Имя: $APP_NAME"'
       - name: secret
         env:
           NOTE_TOKEN: ${{ secrets.NOTE_TOKEN }}
