@@ -1,2 +1,2 @@
 import requests
-print("Библиотека снова")
+print("Вторая отправка")
