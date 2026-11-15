@@ -1,0 +1,14 @@
+name: tag
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  show:
+    runs-on: ubuntu-latest
+    steps:
+      - name: show
+        env:
+          TAG: ${{ github.ref_name }}
+        run: echo "Тег: $TAG"
