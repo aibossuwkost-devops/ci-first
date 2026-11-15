@@ -11,4 +11,4 @@ jobs:
       - name: show
         env:
           TAG: ${{ github.ref_name }}
-        run: echo "Тег: $TAG"
+        run: 'echo "Тег: $TAG"'
