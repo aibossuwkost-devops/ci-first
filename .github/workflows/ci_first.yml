@@ -47,7 +47,7 @@ jobs:
       - name: version
         env:
           VER: ${{ needs.check.outputs.ver }}
-        run: echo 'Версия: $VER'
+        run: 'echo "Версия: $VER"'
       - name: key
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
