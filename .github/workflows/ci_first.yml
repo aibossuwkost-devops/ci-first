@@ -26,8 +26,8 @@ jobs:
       - name: ver
         id: ver
         run: |
-          version=$(python -c "import requests; print(requests.__version__)")
-          echo: "ver=$version" >> "$GITHUB_OUTPUT"
+          ver=$(python -c "import requests; print(requests.__version__)")
+          echo "ver=$ver" >> "$GITHUB_OUTPUT"
       - name: show
         env:
           APP_NAME: ${{ vars.APP_NAME }}
