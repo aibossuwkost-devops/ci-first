@@ -1,2 +1,2 @@
 import requests
-print("Вторая отправка")
+print("Первая часть")
