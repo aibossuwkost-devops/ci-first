@@ -14,14 +14,20 @@ concurrency:
 jobs:
   check:
     runs-on: ubuntu-latest
-    steps:
-      - run: sleep 120 
+    outputs:
+      ver: ${{ steps.ver.outputs.ver }}
+    steps: 
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
         with:
           python-version: "3.13"
       - run: python -m pip install -r requirements.txt
       - run: python app.py
+      - name: ver
+        id: ver
+        run: |
+          version=$(python -c "import requests; print(requests.__version__)")
+          echo: "ver=$version" >> "$GITHUB_OUTPUT"
       - name: show
         env:
           APP_NAME: ${{ vars.APP_NAME }}
@@ -38,6 +44,10 @@ jobs:
     if: github.event_name == 'workflow_dispatch' && github.ref_name == 'main'
     runs-on: ubuntu-latest
     steps:
+      - name: version
+        env:
+          VER: ${{ needs.check.outputs.ver }}
+        run: echo "Версия: $VER"
       - name: key
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
